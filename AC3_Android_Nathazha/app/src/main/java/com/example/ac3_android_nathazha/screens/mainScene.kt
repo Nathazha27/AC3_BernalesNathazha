@@ -1,4 +1,4 @@
-package com.example.ac3_android_nathazha.ui.theme.screens
+package com.example.ac3_android_nathazha.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,9 +15,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.ac3_android_nathazha.ui.theme.models.mainStart
+import com.example.ac3_android_nathazha.models.mainStart
 
-class mainScene {
-
+class mainScene{
 
 }
