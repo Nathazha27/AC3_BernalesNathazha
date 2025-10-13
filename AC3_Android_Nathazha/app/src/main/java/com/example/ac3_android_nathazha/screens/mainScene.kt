@@ -15,8 +15,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.ac3_android_nathazha.R
 import com.example.ac3_android_nathazha.models.mainStart
 
 class mainScene{
-
+    fun Start(): mainStart {
+        return mainStart(R.string.title, 0)
+    }
 }
