@@ -30,7 +30,7 @@ import com.example.ac3_android_nathazha.models.Player
 class TresEnRayaScreen: Screen() {
     val topBar = GameTopBar()
     @Composable
-    fun Render(BackScreen: () -> Unit, NextScreen: () -> Unit, timer: String, player: Player, title: String, win: () -> Unit, gameOver: () -> Unit){
+    fun Render(BackScreen: () -> Unit, NextScreen: () -> Unit, timer: String, player: Player, title: String, win: () -> Unit){
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
@@ -44,11 +44,11 @@ class TresEnRayaScreen: Screen() {
                 modifier = Modifier.padding(20.dp).fillMaxWidth()
             )
             Spacer(modifier = Modifier.padding(30.dp))
-            GameLogic(win, gameOver)
+            GameLogic(win)
         }
     }
     @Composable
-    fun GameLogic(win: () -> Unit, gameOver: () -> Unit){
+    fun GameLogic(win: () -> Unit){
         var tablero by remember {mutableStateOf(List(9){""})}
 
         Column(
@@ -67,7 +67,7 @@ class TresEnRayaScreen: Screen() {
                     for (j in 0 until 3){
                         val tableroIndex = i * 3 + j
                         Button(
-                            onClick = { PlayButton(tableroIndex, tablero,{tablero = it}, win, gameOver)},
+                            onClick = { PlayButton(tableroIndex, tablero,{tablero = it}, win)},
                             enabled = tablero[tableroIndex].isEmpty(),
                             modifier = Modifier.padding(5.dp).size(100.dp)
                         ){
@@ -82,7 +82,7 @@ class TresEnRayaScreen: Screen() {
         }
     }
 
-    fun PlayButton(indexTablero: Int, tablero: List<String>, newTablero: (List<String>) -> Unit, win: () -> Unit, gameOver: () -> Unit){
+    fun PlayButton(indexTablero: Int, tablero: List<String>, newTablero: (List<String>) -> Unit, win: () -> Unit){
         if (tablero[indexTablero].isNotEmpty())
             return
 
@@ -117,7 +117,6 @@ class TresEnRayaScreen: Screen() {
         }
 
         if (CheckGameOver(tableroTmp, probWin)){
-            gameOver()
             for(i in tableroTmp.indices) {
                 tableroTmp[i] = ""
             }

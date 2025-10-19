@@ -79,8 +79,7 @@ fun MyGameApp(modifier: Modifier = Modifier) {
             timerValue,
             actualPlayer,
             stringResource(R.string.titlegame1),
-            {actualPlayer.score += 10},
-            {actualPlayer.score -= 5}
+            {actualPlayer.score += 10}
         )
         is CrashGameScreen -> screen.Render(
             {actualScreen.value = TresEnRayaScreen()},
@@ -88,7 +87,8 @@ fun MyGameApp(modifier: Modifier = Modifier) {
                         startGame = false},
             timerValue,
             actualPlayer,
-            stringResource(R.string.titlegame2)
+            stringResource(R.string.titlegame2),
+            {newScore -> actualPlayer.score = newScore}
         )
     }
 }
