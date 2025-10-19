@@ -4,8 +4,14 @@ import android.R.attr.onClick
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
@@ -26,10 +32,12 @@ class GameTopBar {
     @Composable
     public fun RenderTopBar(BackScreen: () -> Unit, NextScreen: () -> Unit, timer: String, score: Int){
         Box(
-            modifier = Modifier.fillMaxWidth().background(Color(0xFF363C47)).padding(10.dp)
+            modifier = Modifier.background(Color(0xFF363C47)).padding(10.dp).padding(WindowInsets.statusBars
+                .asPaddingValues())
         ){
-            Box(
-                modifier = Modifier.align(Alignment.CenterStart)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
                     onClick = BackScreen
@@ -47,20 +55,23 @@ class GameTopBar {
                         contentDescription = null
                     )
                 }
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = timer,
+                    textAlign = TextAlign.Center,
+                    fontSize = 25.sp,
+                    color = Color.White,
+                    modifier = Modifier.padding(10.dp)
+                )
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = "Score: $score",
+                    modifier = Modifier.padding(15.dp),
+                    textAlign = TextAlign.Right,
+                    fontSize = 23.sp,
+                    color = Color.White
+                )
             }
-            Text(
-                text = timer,
-                textAlign = TextAlign.Center,
-                fontSize = 25.sp,
-                color = Color.White
-            )
-            Text(
-                text = "$score",
-                modifier = Modifier.align(Alignment.CenterEnd),
-                textAlign = TextAlign.Right,
-                fontSize = 20.sp,
-                color = Color.White
-            )
         }
     }
 }
