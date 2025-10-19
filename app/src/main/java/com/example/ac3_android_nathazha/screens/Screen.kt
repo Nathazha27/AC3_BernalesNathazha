@@ -1,10 +1,7 @@
 package com.example.ac3_android_nathazha.screens
 
 import androidx.compose.runtime.Composable
+import com.example.ac3_android_nathazha.components.GameTopBar
 import com.example.ac3_android_nathazha.models.Player
 
-class MainMenuScreen: Screen() {
-    @Composable
-    fun Render(NextScreen: () -> Unit, player: Player){
-    }
-}
+sealed class Screen {}
